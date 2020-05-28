@@ -2,8 +2,12 @@
     <div>
         <h1>User {{user.username}}</h1>
         <hr>
-        <a :href="'/unfollow/'+user.id"><h2>Unfollow</h2></a>
-        <a :href="'/follow/'+user.id"><h2>Follow</h2></a>
+        <p v-if="user.is_following">
+            <a :href="'/unfollow/'+user.id">unfollow</a>
+        </p>
+        <p v-else>
+            <a :href="'/follow/'+user.id">Follow</a>
+        </p>
         <hr>
         <template v-if="posts !== 'Loading events...'">
             <EventCard v-for="post in posts" :key="post.id" :post="post"/>
@@ -32,7 +36,7 @@
                 .then(response => (this.posts = response['data']));
 
             axios
-                .get('http://mukatova-social-network-django.herokuapp.com/api/users/1/', {headers: {'Authorization': `JWT ${token.substring(1, token.length - 1)}`}})
+                .get('http://mukatova-social-network-django.herokuapp.com/api/users/' + this.$route.params.id, {headers: {'Authorization': `JWT ${token.substring(1, token.length - 1)}`}})
                 .then(response => (this.user = response['data']));
         }
     }

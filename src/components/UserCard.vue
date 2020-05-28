@@ -1,6 +1,11 @@
 <template>
     <div class="event-card">
-        <a :href="'/posts/' + user.follower">View posts of {{user.username}}</a>
+        <div v-if="user.follower">
+            <a :href="'/posts/' + user.follower">View posts of {{user.username}}</a>
+        </div>
+        <div v-if="user.following">
+            <a :href="'/posts/' + user.following">View posts of {{user.username}}</a>
+        </div>
     </div>
 </template>
 
