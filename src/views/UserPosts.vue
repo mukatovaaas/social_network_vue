@@ -1,9 +1,14 @@
 <template>
     <div>
-        <h1>User {{$route.params.id}}</h1>
+        <h1>User {{user.username}}</h1>
+        <hr>
+        <a :href="'/unfollow/'+user.id"><h2>Unfollow</h2></a>
+        <a :href="'/follow/'+user.id"><h2>Follow</h2></a>
+        <hr>
         <template v-if="posts !== 'Loading events...'">
             <EventCard v-for="post in posts" :key="post.id" :post="post"/>
         </template>
+
     </div>
 </template>
 
@@ -16,14 +21,19 @@
         data() {
             return {
                 posts: 'Loading posts...',
+                user: '##',
             }
         },
         mounted() {
             var token = localStorage.getItem('user')
             // const header = `Authorization: JWT ${token.substring(1, token.length - 1)}`;
             axios
-                .get('https://mukatova-social-network-django.herokuapp.com/api/posts/'+this.$route.params.id, {headers: {'Authorization': `JWT ${token.substring(1, token.length - 1)}`}})
+                .get('https://mukatova-social-network-django.herokuapp.com/api/posts/' + this.$route.params.id, {headers: {'Authorization': `JWT ${token.substring(1, token.length - 1)}`}})
                 .then(response => (this.posts = response['data']));
+
+            axios
+                .get('http://mukatova-social-network-django.herokuapp.com/api/users/1/', {headers: {'Authorization': `JWT ${token.substring(1, token.length - 1)}`}})
+                .then(response => (this.user = response['data']));
         }
     }
 </script>

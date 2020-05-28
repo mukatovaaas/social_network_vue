@@ -1,8 +1,6 @@
 <template>
     <div class="event-card">
-        <a :href="'/posts/' + user.follower">{{user.username}}</a>
-
-<!--        <a href="/posts/">{{ user.follower }} {{ user.username }}</a>-->
+        <a :href="'/posts/' + user.follower">View posts of {{user.username}}</a>
     </div>
 </template>
 
