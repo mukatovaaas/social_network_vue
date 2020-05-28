@@ -29,17 +29,17 @@ export default new Vuex.Store({
     register ({ commit }, credentials) {
       console.log(credentials)
       return axios
-        .post('http:///localhost:8000/api/users/', credentials)
+        .post('https://mukatova-social-network-django.herokuapp.com/api/users/', credentials)
         .then(({ data }) => {
           commit('SET_USER_DATA', data)
           console.log(data)
-          
+
         })
     },
     login ({ commit }, credentials) {
       // console.log(credentials)
       return axios
-        .post('http://localhost:8000/api/jwt/create/', credentials)
+        .post('https://mukatova-social-network-django.herokuapp.com/api/jwt/create/', credentials)
         .then(({ data }) => {
           commit('SET_USER_DATA', data['access'])
         })

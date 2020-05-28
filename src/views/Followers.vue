@@ -19,7 +19,7 @@
         mounted() {
             var token = localStorage.getItem('user')
             axios
-                .get('http://localhost:8000/api/followers/', {headers: {'Authorization': `JWT ${token.substring(1, token.length - 1)}`}})
+                .get('https://mukatova-social-network-django.herokuapp.com/api/followers/', {headers: {'Authorization': `JWT ${token.substring(1, token.length - 1)}`}})
                 .then(response => (this.users = response['data']));
         }
     }
