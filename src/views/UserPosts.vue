@@ -2,11 +2,20 @@
     <div>
         <h1>User {{user.username}}</h1>
         <hr>
+        {{response}}
         <p v-if="user.is_following">
-            <a :href="'/unfollow/'+user.id">unfollow</a>
+            <template>
+                <form v-on:submit="unfollow" action="#" method="post">
+                    <button type="submit">Unfollow</button>
+                </form>
+            </template>
         </p>
         <p v-else>
-            <a :href="'/follow/'+user.id">Follow</a>
+            <template>
+                <form v-on:submit="follow" action="#" method="post">
+                    <button type="submit">Follow</button>
+                </form>
+            </template>
         </p>
         <hr>
         <template v-if="posts !== 'Loading events...'">
@@ -26,6 +35,7 @@
             return {
                 posts: 'Loading posts...',
                 user: '##',
+                response: '',
             }
         },
         mounted() {
@@ -38,6 +48,37 @@
             axios
                 .get('http://mukatova-social-network-django.herokuapp.com/api/users/' + this.$route.params.id, {headers: {'Authorization': `JWT ${token.substring(1, token.length - 1)}`}})
                 .then(response => (this.user = response['data']));
+        },
+        methods: {
+            unfollow: function (event) {
+                event.preventDefault();
+                var token = localStorage.getItem('user');
+                axios.defaults.headers.common['Authorization'] = `JWT ${token.substring(1, token.length - 1)}`;
+                axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+                axios
+                    .post('https://mukatova-social-network-django.herokuapp.com/api/unfollow/', {
+                        following: this.user.id
+                    })
+                    .then(response => (
+                        this.response = response['data']
+                    ))
+            },
+            follow: function (event) {
+                event.preventDefault();
+                var token = localStorage.getItem('user');
+                axios.defaults.headers.common['Authorization'] = `JWT ${token.substring(1, token.length - 1)}`;
+                axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+                axios
+                    .post('https://mukatova-social-network-django.herokuapp.com/api/follow/', {
+                        following: this.user.id
+                    })
+                    .then(response => (
+                        this.response = response['data']
+                    ))
+            }
         }
+
     }
 </script>
