@@ -2,7 +2,7 @@
     <div>
         <h1>My followings</h1>
         <template v-if="users !== 'Loading events...'">
-            <UserCard v-for="user in users" :key="user.id" :user="user"/>
+            <UserCard v-for="user in users" :key="user" :user="user"/>
         </template>
     </div>
 </template>

@@ -5,14 +5,14 @@
             <h2>Chats</h2>
             <div v-for="(item, key) in users" :key="key">
                 <hr>
-                <a :href="'/messages/' + item">{{key}}</a>
+                <a :href="'/messages/' + item">Chat with {{key}}</a>
                 <hr>
             </div>
         </div>
         <div style="width: 50%; float:right">
             <h2>Last Messages</h2>
             <template v-if="messages !== 'Loading events...'">
-                <MessageCard v-for="message in messages.slice(0, 10)" :key="message" :message="message"/>
+                <MessageCard v-for="message in messages.slice(0, 5)" :key="message" :message="message"/>
             </template>
         </div>
     </div>

@@ -2,7 +2,7 @@
     <div>
         <h1>User {{user.username}}</h1>
         <hr>
-        {{response}}
+        <a :href="'/messages/' + user.id">Chat with {{user.username}}</a>
         <p v-if="user.is_following">
             <template>
                 <form v-on:submit="unfollow" action="#" method="post">

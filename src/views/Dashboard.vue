@@ -4,10 +4,8 @@
         <hr>
         <p>{{log}}</p>
         <form v-on:submit="sub" action="#" method="post">
-
             <textarea v-model="content" placeholder="content"></textarea>
             <button type="submit">Post</button>
-
         </form>
         <hr>
         <template v-if="posts !== 'Loading events...'">
@@ -24,7 +22,7 @@
         components: {EventCard},
         data() {
             return {
-                posts: 'Loading posts...',
+                posts: [],
                 content: "",
                 current: '',
                 log: '',

@@ -1,24 +1,20 @@
 <template>
     <div class="event-card">
-        <a :href="'/posts/' + user.id">View posts of {{user.username}}</a>
-        <div v-if="user.is_following===true">
-            <p>Following</p>
-        </div>
-        <div v-else-if="user.is_following===false">
-            <p>Unfollowing</p>
-        </div>
+        <span>{{ comment.user_ }}: {{ comment.content }}</span>
+
     </div>
 </template>
 
 <script>
+
     export default {
-        name: 'UserCard',
+        name: 'EventCard',
         props: {
-            user: {
+            comment: {
                 type: Object,
                 default: () => ({})
             }
-        }
+        },
     }
 </script>
 

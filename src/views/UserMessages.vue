@@ -1,26 +1,31 @@
 <template>
     <div>
-        <h1>User Chat</h1>
-        <h2>Chat with {{this.user.username}}</h2>
-        <form v-on:submit="send_message">
-            <textarea v-model="sending_message"></textarea>
-            <button type="submit" name="button">
-                Send
-            </button>
-        </form>
-        <template v-if="user">
-            <UserChatCard v-for="message in messages" :key="message" :message="message"/>
-        </template>
+        <div style="width: 50%; float:left">
 
+            <h1>User Chat</h1>
+            <h2>Chat with             <a :href="'/posts/' + this.user.id">{{this.user.username}}</a></h2>
+            <template v-if="user">
+                <SendMessageCard :key="user" :user="user"/>
+            </template>
+        </div>
+        <div style="width: 50%; float:right">
+            <template v-if="user">
+                <UserChatCard v-for="message in messages" :key="message" :message="message"/>
+            </template>
+        </div>
     </div>
 </template>
 
 <script>
     import axios from 'axios'
     import UserChatCard from '../components/UserChatCard'
+    import SendMessageCard from '../components/SendMessageCard'
 
     export default {
-        components: {UserChatCard},
+        components: {
+            UserChatCard,
+            SendMessageCard
+        },
         data() {
             return {
                 user: 'Loading ...',

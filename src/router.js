@@ -8,6 +8,8 @@ import Followers from "@/views/Followers";
 import Following from "@/views/Following";
 import Messages from "@/views/Messages";
 import UserMessages from "@/views/UserMessages";
+import UserSearch from "@/views/UserSearch";
+import PostDetails from "@/views/PostDetails";
 
 Vue.use(Router)
 
@@ -46,6 +48,11 @@ const router = new Router({
             props: true
         },
         {
+            path: '/comments/:id',
+            component: PostDetails,
+            props: true
+        },
+        {
             path: '/messages',
             component: Messages,
             props: true
@@ -53,6 +60,11 @@ const router = new Router({
         {
             path: '/messages/:id',
             component: UserMessages,
+            props: true
+        },
+        {
+            path: '/search/',
+            component: UserSearch,
             props: true
         },
 

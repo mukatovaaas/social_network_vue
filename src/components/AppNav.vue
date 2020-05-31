@@ -17,6 +17,9 @@
             <router-link to="/messages">
                 Messages
             </router-link>
+            <router-link to="/search">
+                Search
+            </router-link>
 
             <span class="nav-welcome">Hello, {{ user.name }}.</span>
 
