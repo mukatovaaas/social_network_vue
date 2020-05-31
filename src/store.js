@@ -27,12 +27,12 @@ export default new Vuex.Store({
   },
   actions: {
     register ({ commit }, credentials) {
-      console.log(credentials)
+      // console.log(credentials)
       return axios
         .post('https://mukatova-social-network-django.herokuapp.com/api/users/', credentials)
         .then(({ data }) => {
           commit('SET_USER_DATA', data)
-          console.log(data)
+          // alert(data)
 
         })
     },
