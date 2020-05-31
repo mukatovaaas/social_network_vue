@@ -40,7 +40,6 @@
         },
         mounted() {
             var token = localStorage.getItem('user')
-            // const header = `Authorization: JWT ${token.substring(1, token.length - 1)}`;
             axios
                 .get('https://mukatova-social-network-django.herokuapp.com/api/posts/' + this.$route.params.id, {headers: {'Authorization': `JWT ${token.substring(1, token.length - 1)}`}})
                 .then(response => (this.posts = response['data']));

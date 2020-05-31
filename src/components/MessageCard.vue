@@ -1,10 +1,7 @@
 <template>
     <div class="event-card">
-        <p>{{message.recipient}}: {{message.message}}</p>
+        <p>{{message.recipient_}}: {{message.message}}</p>
         <small> {{message.created_at}}</small>
-        <a href="">
-            <p>Read more... </p>
-        </a>
     </div>
 </template>
 
