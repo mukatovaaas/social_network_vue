@@ -14,6 +14,9 @@
             <router-link to="/following">
                 Following
             </router-link>
+            <router-link to="/messages">
+                Messages
+            </router-link>
 
             <span class="nav-welcome">Hello, {{ user.name }}.</span>
 

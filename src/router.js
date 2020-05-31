@@ -6,6 +6,8 @@ import UserPosts from './views/UserPosts.vue'
 import Authenticate from './views/Authenticate.vue'
 import Followers from "@/views/Followers";
 import Following from "@/views/Following";
+import Messages from "@/views/Messages";
+import UserMessages from "@/views/UserMessages";
 
 Vue.use(Router)
 
@@ -41,7 +43,18 @@ const router = new Router({
         {
             path: '/posts/:id',
             component: UserPosts,
-            props: true},
+            props: true
+        },
+        {
+            path: '/messages',
+            component: Messages,
+            props: true
+        },
+        {
+            path: '/messages/:id',
+            component: UserMessages,
+            props: true
+        },
 
     ]
 })
