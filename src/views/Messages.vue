@@ -2,6 +2,7 @@
     <div>
         <h1>Messages</h1>
         <div style="width: 50%; float:left">
+            <h2>Chats</h2>
             <div v-for="(item, key) in users" :key="key">
                 <hr>
                 <a :href="'/messages/' + item">{{key}}</a>
