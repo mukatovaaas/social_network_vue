@@ -11,7 +11,7 @@
         <div style="width: 50%; float:right">
             <h2>Last Messages</h2>
             <template v-if="messages !== 'Loading events...'">
-                <MessageCard v-for="message in messages" :key="message" :message="message"/>
+                <MessageCard v-for="message in messages.slice(0, 10)" :key="message" :message="message"/>
             </template>
         </div>
     </div>
