@@ -37,7 +37,7 @@
         mounted() {
             var token = localStorage.getItem('user')
             axios
-                .get('http://mukatova-social-network-django.herokuapp.com/api/users/' + this.$route.params.id, {headers: {'Authorization': `JWT ${token.substring(1, token.length - 1)}`}})
+                .get('https://mukatova-social-network-django.herokuapp.com/api/users/' + this.$route.params.id, {headers: {'Authorization': `JWT ${token.substring(1, token.length - 1)}`}})
                 .then(response => (this.user = response['data']));
         },
         methods: {
